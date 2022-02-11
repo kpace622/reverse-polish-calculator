@@ -1,4 +1,5 @@
 from arithmetic import add, subtract, multiply, divide
+import sys
 
 calcArray = []
 
@@ -42,22 +43,22 @@ def getInput():
 					calcArray.clear()
 				else:
 					newInput = input('\nPlease enter the rest of your expression: ')
-					print('new input', newInput)
 					newCalcArray = calcArray[0] + " " + newInput
-					print('new calc array', newCalcArray)
 					calcArray.clear()
 					calcArray.append(newCalcArray)
-					print('calcarray', calcArray)
-					checkInfo = input('\nDone entering info? Type "y" to calculate otherwise type "n" to continue entering: ')
+					checkInfo = input('\nDone entering your expression? Type "y" to calculate otherwise type "n" to continue entering: ')
 					if checkInfo == "y":
 						calculateResult()
 
 
 
-			calculation = input('\nPlease ener your calculation in reverse polish notation: ')
+			calculation = input('\nPlease enter your calculation in reverse polish notation or press q to quit: ')
 		except ValueError:
-			# print("Sorry, let's try that input again")
+			print("Sorry, let's try that input again")
 			continue
+
+		if calculation == 'q':
+			sys.exit()
 
 		if calculation.isalpha():
 			print("\nPlease provide a valid expression to calculate (Maybe try entering numbers!)")
@@ -66,7 +67,7 @@ def getInput():
 		else:
 			calcArray.append(calculation)
 
-			checkInfo = input('\nDone entering info? Type "y" to calculate otherwise type "n" to continue entering: ')
+			checkInfo = input('\nDone entering your expression? Type "y" to calculate otherwise type "n" to continue entering: ')
 
 			if checkInfo == "y":
 				calculateResult()
@@ -76,7 +77,7 @@ def getInput():
 					newCalcArray = calcArray[0] + " " + newInput
 					calcArray.clear()
 					calcArray.append(newCalcArray)
-					checkInfo = input('\nDone entering info? Type "y" to calculate otherwise type "n" to continue entering: ')
+					checkInfo = input('\nDone entering expression? Type "y" to calculate otherwise type "n" to continue entering: ')
 					if checkInfo == "y":
 						calculateResult()
 						break
